@@ -1,0 +1,8 @@
+This file contains a description of the data in this folder
+
+names.csv: table with three columns
+    filename: file name of tree ring file in ITRDB
+    name_orig: original name of tree ring series in file
+    name_new: name of tree ring series used in the analyses
+ 
+ itrdb-201909020952.backup: PostgreSQL-database-dump
