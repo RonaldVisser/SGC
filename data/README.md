@@ -14,3 +14,4 @@ GC_af_tbl: table with SGC for data from Africa (ITRDB).
     
 Table from other continents are too big to share here, but can be made available
 
+itrdb.sql: structure of database used
