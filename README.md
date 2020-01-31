@@ -1,2 +1,2 @@
 # SGC
-Code and data used for the SGC
+Code and data used to calculate the SGC (Synchronous Growth Changes)
