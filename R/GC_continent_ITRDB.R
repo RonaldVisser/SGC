@@ -2,7 +2,6 @@
 library(dplR)
 library(pastecs)
 
-
 # Read and correct data ---------------------------------------------------------------
 
 treeringfile <- file.choose() # choose file
@@ -91,6 +90,6 @@ dev.off()
 jpeg("SSGC_boxplot.jpg")
 boxplot(SSGC, pch=20, col=2)
 dev.off()
-jpeg("Overlap_boxplot.jpg") 
+jpeg("Overlap_boxplot.jpg")
 boxplot(OL, pch=20, col=2)
 dev.off()
