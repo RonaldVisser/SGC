@@ -1,7 +1,14 @@
 # glk.R from dplR (https://cran.r-project.org/src/contrib/dplR_1.6.7.tar.gz) has been used as inspiration
 # calulate Gleichlaufigkeit
-# author: Ronald Visser
-GLK <- function(x, overlap = 3) {
+# author of this version: Ronald Visser based on versions by Christian Zang, Mikko Korpela and Allan Buras
+glk <- function(x, overlap = 50) {
+  if(!("rwl" %in% class(x))) warning("'x' is not class rwl")
+  if(any(length(overlap)!=1 | !is.numeric(overlap) | 
+         overlap%%1!=0 | overlap < 3)){
+    stop("'overlap' should be a single integer >=3")
+  }
+  if(overlap < 50) warning("The minimum number of overlap is lower than 50. This might lead to statistically insignificant matches.")
+  # function starts here
   n <- dim(x)[2]
   GLK_mat <- matrix(NA_real_, nrow = n, ncol = n)
   Overlap_n <- matrix(NA_real_, nrow = n, ncol = n)
@@ -19,5 +26,5 @@ GLK <- function(x, overlap = 3) {
     GLK_mat[i,] <- GLK_values
     Overlap_n[i,] <- treering_GCol
   }
-  GLK <- list(GLK_mat,Overlap_n)
+  glk <- list(GLK_mat,Overlap_n)
 }
