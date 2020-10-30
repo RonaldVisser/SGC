@@ -19,21 +19,23 @@ sgc(x,overlap = 50)
 }
 
 \details{
-The sgc is a non parametric test based on sign tests.The synchronous growth changes (sgc) and semi synchronous growth changes (ssgc) are proposed to replace the \enc{Gleichläufigkeit}{Gleichlaeufigkeit} (\code{\link[=glk]{glk()}}), since the \enc{Gleichläufigkeit}{Gleichlaeufigkeit} can be strongly influenced by years when one of the compared series shows no growth change. The sgc gives a better description of the similarity (Visser, 2020). The ssgc gives the percentage years that one of the compared series shows no growth change. This function implements sgc and ssgc as the vectorized pairwise comparison of all records in data set. It returns a list of two matrices. 
-\enumerate{
-  \item Matrix with sgc and ssgc. 
-  \itemize{
-    \item{Upper triangle: sgc values}
-    \item{Lower triange: ssgc values}
-  }
-  \item Matrix with number of overlapping growth changes. This is the number of overlapping years minus one.
-  }
-The matrices can be extracted from the list by selecting the index number. The first item in the list is the sgc/ssgc-matrix, the second the overlap. To calculate the global sgc of the dataset (assuming the sgc/ssgc is extracted as \code{x.sgc}) \code{mean(x.sgc[upper.tri(x.sgc), na.rm = TRUE)}. For the global ssgc used: \code{mean(x.sgc[lower.tri(x.sgc), na.rm = TRUE)}
+The sgc is a non parametric test based on sign tests.The synchronous growth changes (sgc) and semi synchronous growth changes (ssgc) are proposed to replace the \enc{Gleichläufigkeit}{Gleichlaeufigkeit} (\code{\link[=glk]{glk()}}), since the \enc{Gleichläufigkeit}{Gleichlaeufigkeit} can be strongly influenced by years when one of the compared series shows no growth change. The sgc gives a better description of the similarity (Visser, 2020). The ssgc gives the percentage years that one of the compared series shows no growth change. This function implements sgc and ssgc as the vectorized pairwise comparison of all records in data set. 
 
 }
 
 \value{
-  A \code{list} with a \code{matrix} for the sgc/ssgc and a \code{matrix} for the overlap. Comparisons are only compared if the overlap is above the set theshold and if no threshold is set, this defaults to 50 years.If no comparison can be compared, \code{NA} is returned.
+  A \code{list} with a \code{matrix} for the sgc/ssgc and a \code{matrix} for the overlap:
+  \enumerate{
+    \item Matrix with sgc and ssgc.
+    \itemize{
+      \item{Upper triangle: sgc values}
+      \item{Lower triange: ssgc values}
+    }
+    \item Matrix with number of overlapping growth changes. This is the number of overlapping years minus one.
+    }
+The matrices can be extracted from the list by selecting the index number. Comparisons are only compared if the overlap is above the set theshold and if no threshold is set, this defaults to 50 years.If no comparison can be compared, \code{NA} is returned.
+To calculate the global sgc of the dataset (assuming the sgc/ssgc is extracted as \code{x.sgc}) \code{mean(x.sgc[upper.tri(x.sgc), na.rm = TRUE)}. For the global ssgc used: \code{mean(x.sgc[lower.tri(x.sgc), na.rm = TRUE)}
+ 
 }
 
 \author{ Ronald Visser}
@@ -47,7 +49,7 @@ The matrices can be extracted from the list by selecting the index number. The f
   \code{\link[=sgc_p]{sgc_p()}},
   \code{\link[=glk]{glk()}}
   }
- 
+
 \examples{
 library(dplR)
 data(ca533)
@@ -57,5 +59,3 @@ ca533.sgc_ol <- as.data.frame(ca533.sgclist[2])
 mean(ca533.sgc[lower.tri(ca533.sgc), na.rm = TRUE)
 mean(ca533.sgc[upper.tri(ca533.sgc), na.rm = TRUE)
 }
-
-

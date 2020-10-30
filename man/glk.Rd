@@ -17,27 +17,21 @@ glk(x, overlap = 50)
 
 \arguments{
   \item{x}{ a \code{data.frame} of tree-ring data with records in
-    columns, and years as rows.}  
+    columns, and years as rows.}
   \item{overlap}{ integer value with minimal length of overlapping growth changes (compared number of tree rings - 1). Comparisons with less overlap are not compared.}
 }
 
 \details{
-  \enc{Gleichläufigkeit}{Gleichlaeufigkeit} is a classical agreement test based on sign tests (Eckstein and Bauch, 1969).  This function   implements \enc{Gleichläufigkeit}{Gleichlaeufigkeit} as the pairwise   comparison of all records in data set, and thus returns a list of two matrices. 
-\enumerate{
-  \item Matrix with \enc{Gleichläufigkeit}{Gleichlaeufigkeit}
-  \item Matrix with number of overlapping growth changes. This is the number of overlapping years minus one.
-}
-The matrices can be extracted from the list by selecting the index number. The first item in the list is the glk-matrix, the second the overlap. To calculate the global glk of the dataset (assuming the glk is extracted as \code{x.glk}) \code{mean(x.glk, na.rm = TRUE)}.
-This vectorized implementation is faster than the previous version and follows the original definition (Huber 1942), instead of the incorrect interpretation that has been used in the past (Schweingruber 1988, see Buras/Wilmking 2015 for the correction) 
-
-improves  the original formulation inasmuch as the case of neighbouring identical measurements in the same years is accounted for.  Here, it is treated as full agreement, in contrast to only partial agreement in the original formulation.
+  \enc{Gleichläufigkeit}{Gleichlaeufigkeit} is a classical agreement test based on sign tests (Eckstein and Bauch, 1969).  This function   implements \enc{Gleichläufigkeit}{Gleichlaeufigkeit} as the pairwise comparison of all records in data set. This vectorized implementation is faster than the previous version and follows the original definition (Huber 1942), instead of the incorrect interpretation that has been used in the past (Schweingruber 1988, see Buras/Wilmking 2015 for the correction). 
 }
 
 \value{
-  A \code{matrix} with the \enc{Gleichläufigkeit}{Gleichlaeufigkeit} for
-  all possible combinations of records.  If two curves have less than 3
-  years of overlap, \enc{Gleichläufigkeit}{Gleichlaeufigkeit} cannot be
-  computed, and \code{NA} is returned.
+  The funtions returns a \code{list} of two matrices. \enumerate{
+    \item \code{matrix} with \enc{Gleichläufigkeit}{Gleichlaeufigkeit with all possible combinations of records}
+    \item \code{matrix} with number of overlapping growth changes.This is the number of overlapping years minus one.
+}
+The matrices can be extracted from the list by selecting the index number. The first item in the list is the glk-matrix, the second the overlap. If two curves have less than 3 years of overlap, \enc{Gleichläufigkeit}{Gleichlaeufigkeit} cannot be computed, and \code{NA} is returned.
+To calculate the global glk of the dataset (assuming the glk is extracted as \code{x.glk}) \code{mean(x.glk, na.rm = TRUE)}.
 }
 
 \author{ Christian Zang.  Patched and improved by Mikko Korpela.
