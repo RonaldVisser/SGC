@@ -1,4 +1,6 @@
 # SGC
+<a href="https://zenodo.org/badge/latestdoi/211880587"><img src="https://zenodo.org/badge/211880587.svg" alt="DOI"></a>
+
 Code and data used to calculate the SGC (Synchronous Growth Changes), SSGC (Semi-Synchronous Growth Changes) and related functions and scripts.
 
 Published as: 
